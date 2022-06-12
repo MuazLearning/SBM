@@ -6,10 +6,10 @@ import javax.persistence.*;
 @Table(name="POJO_TABLE")
 public class Pojo {
 
-    // allocationSize = artış miktarı, initialValue = başlangıç
-    @SequenceGenerator(name="seq", sequenceName = "POJO_TABLE_ID_SEQ", allocationSize = 1, initialValue = 100)
+    @TableGenerator(name = "table", table = "POJO_SEQ_TABLE", allocationSize = 1,
+            pkColumnName = "PK_NAME", valueColumnName = "DEGER", pkColumnValue = "POJO")
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "table")
     private Long id;
 
     public Long getId() {
