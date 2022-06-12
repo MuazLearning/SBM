@@ -2,6 +2,7 @@ package domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Table(name = "POJO_TABLE")
@@ -19,6 +20,18 @@ public class Pojo {
 
     @Column(name = "DEGER", precision = 15, scale = 2)
     private BigDecimal deger;
+
+    @Column(name = "TARIH")
+    @Temporal(TemporalType.DATE)
+    private Date tarih;
+
+    @Column(name = "SAAT")
+    @Temporal(TemporalType.TIME)
+    private Date saat;
+
+    @Column(name = "TARIH_SAAT")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date tarihSaat;
 
     public Long getId() {
         return id;
@@ -42,5 +55,29 @@ public class Pojo {
 
     public void setDeger(BigDecimal deger) {
         this.deger = deger;
+    }
+
+    public Date getTarih() {
+        return tarih;
+    }
+
+    public void setTarih(Date tarih) {
+        this.tarih = tarih;
+    }
+
+    public Date getSaat() {
+        return saat;
+    }
+
+    public void setSaat(Date saat) {
+        this.saat = saat;
+    }
+
+    public Date getTarihSaat() {
+        return tarihSaat;
+    }
+
+    public void setTarihSaat(Date tarihSaat) {
+        this.tarihSaat = tarihSaat;
     }
 }
