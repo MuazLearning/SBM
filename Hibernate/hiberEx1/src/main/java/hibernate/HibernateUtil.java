@@ -12,9 +12,11 @@ public class HibernateUtil {
         try {
             Configuration cfg = new Configuration();
             cfg.addAnnotatedClass(Pojo.class);
+
             SessionFactory sessionFactory = cfg.configure("hibernate.cfg.xml").buildSessionFactory();
+
             return sessionFactory;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Session factory oluşturulurken bir hata oluştu." + e);
             throw new ExceptionInInitializerError(e);
         }
@@ -23,5 +25,4 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
-
 }
