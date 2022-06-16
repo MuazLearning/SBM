@@ -33,6 +33,9 @@ public class Pojo {
     @Temporal(TemporalType.TIMESTAMP)
     private Date tarihSaat;
 
+    @Transient
+    private String geciciGrup;
+
     public Long getId() {
         return id;
     }
@@ -80,4 +83,13 @@ public class Pojo {
     public void setTarihSaat(Date tarihSaat) {
         this.tarihSaat = tarihSaat;
     }
+
+    public String getGeciciGrup() {
+        return geciciGrup;
+    }
+
+    public void setGeciciGrup(String geciciGrup) {
+        this.geciciGrup = geciciGrup;
+    }
+
 }

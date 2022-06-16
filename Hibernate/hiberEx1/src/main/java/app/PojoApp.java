@@ -19,6 +19,7 @@ public class PojoApp {
         pojo.setTarih(tarih);
         pojo.setSaat(tarih);
         pojo.setTarihSaat(tarih);
+        pojo.setGeciciGrup("asdsadsad");
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
