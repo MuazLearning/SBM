@@ -36,6 +36,18 @@ public class Pojo {
     @Transient
     private String geciciGrup;
 
+    @Lob
+    @Column(name = "BUYUK_STRING")
+    private String buyukString;
+
+    @Lob
+    @Column(name = "BUYUK_BYTE")
+    private byte[] buyukByte;
+
+    @Lob
+    @Column(name = "BUYUK_CHAR")
+    private char[] buyukChar;
+
     public Long getId() {
         return id;
     }
@@ -92,4 +104,27 @@ public class Pojo {
         this.geciciGrup = geciciGrup;
     }
 
+    public String getBuyukString() {
+        return buyukString;
+    }
+
+    public void setBuyukString(String buyukString) {
+        this.buyukString = buyukString;
+    }
+
+    public byte[] getBuyukByte() {
+        return buyukByte;
+    }
+
+    public void setBuyukByte(byte[] buyukByte) {
+        this.buyukByte = buyukByte;
+    }
+
+    public char[] getBuyukChar() {
+        return buyukChar;
+    }
+
+    public void setBuyukChar(char[] buyukChar) {
+        this.buyukChar = buyukChar;
+    }
 }
