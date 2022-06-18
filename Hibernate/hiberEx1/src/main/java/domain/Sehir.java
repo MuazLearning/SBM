@@ -3,7 +3,14 @@ package domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "SEHIR")
+@Table(name = "SEHIR",
+//        indexes = @Index(name = "IX_SEHIR_ADI_ID", columnList = "ADI, ID", unique = true)
+        indexes = {
+                @Index(name = "IX_SEHIR_ADI_ID", columnList = "ADI, ID", unique = true),
+                @Index(name = "IX_SEHIR_ULKE", columnList = "ID_ULKE", unique = true)
+        }
+)
+
 public class Sehir {
 
     @SequenceGenerator(name = "sehir", sequenceName = "SEHIR_ID_SEQ")
