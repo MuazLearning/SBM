@@ -1,6 +1,8 @@
 package domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "ULKE")
@@ -13,6 +15,14 @@ public class Ulke {
 
     @Column(name = "ADI", length = 100)
     private String adi;
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "ulke",
+            targetEntity = Sehir.class
+    )
+    private Set sehirler = new HashSet();
 
     public Long getId() {
         return id;
@@ -28,5 +38,13 @@ public class Ulke {
 
     public void setAdi(String adi) {
         this.adi = adi;
+    }
+
+    public Set getSehirler() {
+        return sehirler;
+    }
+
+    public void setSehirler(Set sehirler) {
+        this.sehirler = sehirler;
     }
 }
