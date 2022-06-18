@@ -15,8 +15,10 @@ public class Kisi {
     @Column(name = "ISIM", length = 100)
     private String isim;
 
-    // mappedBy => Kullanıldığı entity için database de veri oluşmamasını sağlıyor
-    @OneToOne(fetch = FetchType.LAZY, optional = false, mappedBy = "kisi")
+    // mappedBy => Kullanıldığı entity için database de veri oluşmamasını sağlıyor. Kisi tablosunda "parmakizi" kolonu oluşmaz
+    // mappedBy için parkIzındeki kisi değişkeninin adı birebir aynı yazılır.
+    // TODO optional false yap. Hatayı çöz
+    @OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "kisi")
     private ParmakIzi parmakIzi;
 
     public Long getId() {

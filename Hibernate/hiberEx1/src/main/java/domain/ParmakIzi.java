@@ -8,7 +8,7 @@ public class ParmakIzi {
 
     @SequenceGenerator(name = "parmak", sequenceName = "PARMAK_IZI_ID_SEC")
     @Id
-    @GeneratedValue(generator = "kisi", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "parmak", strategy = GenerationType.SEQUENCE)
     @Column(name = "ID")
     private Long id;
 
