@@ -11,11 +11,16 @@ public class HibernateUtil {
     private static SessionFactory buildSessionFactory() {
         try {
             Configuration cfg = new Configuration();
-            cfg.addAnnotatedClass(Pojo.class);
-            cfg.addAnnotatedClass(Kisi.class);
-            cfg.addAnnotatedClass(ParmakIzi.class);
-            cfg.addAnnotatedClass(Kitap.class);
-            cfg.addAnnotatedClass(Yazar.class);
+//            cfg.addAnnotatedClass(Pojo.class);
+//
+//            cfg.addAnnotatedClass(Kisi.class);
+//            cfg.addAnnotatedClass(ParmakIzi.class);
+//
+//            cfg.addAnnotatedClass(Kitap.class);
+//            cfg.addAnnotatedClass(Yazar.class);
+
+            cfg.addAnnotatedClass(Ulke.class);
+            cfg.addAnnotatedClass(Sehir.class);
 
             SessionFactory sessionFactory = cfg.configure("hibernate.cfg.xml").buildSessionFactory();
 
