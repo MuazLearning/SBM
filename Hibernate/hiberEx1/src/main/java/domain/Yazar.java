@@ -20,7 +20,7 @@ public class Yazar {
     @ManyToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
-            mappedBy = "yazarlar",
+            mappedBy = "yazarlar"
     )
     private Set<Kitap> kitaplar = new HashSet();
 

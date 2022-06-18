@@ -1,8 +1,6 @@
 package hibernate;
 
-import domain.Kisi;
-import domain.ParmakIzi;
-import domain.Pojo;
+import domain.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -16,6 +14,8 @@ public class HibernateUtil {
             cfg.addAnnotatedClass(Pojo.class);
             cfg.addAnnotatedClass(Kisi.class);
             cfg.addAnnotatedClass(ParmakIzi.class);
+            cfg.addAnnotatedClass(Kitap.class);
+            cfg.addAnnotatedClass(Yazar.class);
 
             SessionFactory sessionFactory = cfg.configure("hibernate.cfg.xml").buildSessionFactory();
 
