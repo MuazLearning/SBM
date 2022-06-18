@@ -14,8 +14,18 @@ public class Sehir {
     @Column(name = "ADI", length = 100)
     private String adi;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_ULKE", nullable = false)
+    @ManyToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(
+            name = "ID_ULKE",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "FK_SEHIR_ULKE", value = ConstraintMode.CONSTRAINT,
+//                    foreignKeyDefinition = "UNIQUE(ID)"
+                    foreignKeyDefinition = "FOREIGN KEY(ID_ULKE) REFERENCES ULKE(ID) ON DELETE CASCADE"
+            )
+    )
     private Ulke ulke;
 
     public Long getId() {
