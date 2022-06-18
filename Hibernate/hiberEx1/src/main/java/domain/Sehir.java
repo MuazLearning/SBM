@@ -14,7 +14,8 @@ public class Sehir {
     @Column(name = "ADI", length = 100)
     private String adi;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_ULKE", nullable = false)
     private Ulke ulke;
 
     public Long getId() {
