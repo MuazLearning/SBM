@@ -3,6 +3,7 @@ package entityservice;
 import dao.UrunTuruDao;
 import domain.Urun;
 import domain.UrunTuru;
+import org.hibernate.criterion.MatchMode;
 
 import java.util.List;
 
@@ -20,6 +21,10 @@ public class UrunTuruEntityService {
 
     public UrunTuru findById(Long id){
         return urunTuruDao.findById(id);
+    }
+
+    public List<UrunTuru> findByUrunAdi(String urunAdi, MatchMode matchMode) {
+        return urunTuruDao.findByUrunAdi(urunAdi, matchMode);
     }
 
 }
