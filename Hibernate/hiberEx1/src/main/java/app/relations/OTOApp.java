@@ -1,4 +1,4 @@
-package app;
+package app.relations;
 
 import domain.oto.Kisi;
 import domain.oto.ParmakIzi;

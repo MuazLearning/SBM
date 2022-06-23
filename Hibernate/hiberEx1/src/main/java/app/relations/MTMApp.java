@@ -1,4 +1,4 @@
-package app;
+package app.relations;
 
 import domain.mtm.Kitap;
 import domain.mtm.Yazar;

@@ -1,4 +1,4 @@
-package app;
+package app.relations;
 
 import domain.mto.Sehir;
 import domain.mto.Ulke;
@@ -6,7 +6,7 @@ import hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class FKApp {
+public class MTOApp {
 
     public static void main(String[] args) {
 
@@ -21,5 +21,6 @@ public class FKApp {
         Transaction transaction = session.beginTransaction();
         session.merge(sehir);
         transaction.commit();
+
     }
 }
