@@ -1,7 +1,6 @@
 package entityservice;
 
 import dao.UrunDao;
-import dao.UrunTuruDao;
 
 public class UrunEntityService {
 

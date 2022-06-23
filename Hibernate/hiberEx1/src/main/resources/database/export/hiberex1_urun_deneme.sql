@@ -1,0 +1,57 @@
+CREATE DATABASE  IF NOT EXISTS `hiberex1` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `hiberex1`;
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+--
+-- Host: localhost    Database: hiberex1
+-- ------------------------------------------------------
+-- Server version	5.7.22-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `urun_deneme`
+--
+
+DROP TABLE IF EXISTS `urun_deneme`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `urun_deneme` (
+  `id` bigint(20) NOT NULL,
+  `ADI` varchar(100) DEFAULT NULL,
+  `FIYAT` decimal(15,2) DEFAULT NULL,
+  `SIFRE` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `phone` decimal(15,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `urun_deneme`
+--
+
+LOCK TABLES `urun_deneme` WRITE;
+/*!40000 ALTER TABLE `urun_deneme` DISABLE KEYS */;
+INSERT INTO `urun_deneme` VALUES (52,NULL,NULL,'1231231234','sbahadir@gmail.com',44.00),(53,NULL,NULL,'0000','ayse@gmail.com',111.00),(54,NULL,NULL,'999','fatma@gmail.com',444.00),(102,NULL,NULL,'0000','ayse@gmail.com',111.00),(103,NULL,NULL,'999','fatma@gmail.com',444.00),(152,NULL,NULL,'999','fatma@gmail.com',444.00);
+/*!40000 ALTER TABLE `urun_deneme` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-03-05 11:07:00
