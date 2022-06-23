@@ -8,6 +8,7 @@ import hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import javax.persistence.ParameterMode;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -135,10 +136,29 @@ public class UrunDao {
         return list;
     }
 
-    public List<Urun> callUrunFindUrunBetween(Long min, Long max) {
+    public List<Urun> callUrunFindUrunBetween(BigDecimal min, BigDecimal max) {
         Session session = sessionFactory.openSession();
         List<Urun> list = session.createNativeQuery("{call find_urun_between(:min, :max)}")
                 .addEntity(Urun.class).setParameter("min", min).setParameter("max", max).list();
+        session.close();
+        return list;
+    }
+
+    public List<Urun> callUrunFindAll2() {
+        Session session = sessionFactory.openSession();
+        List<Urun> list = session.createStoredProcedureQuery("urun_findAll", Urun.class).getResultList();
+        session.close();
+        return list;
+    }
+
+    public List<Urun> callUrunFindUrunBetween2(BigDecimal min, BigDecimal max) {
+        Session session = sessionFactory.openSession();
+        List<Urun> list = session.createStoredProcedureQuery("find_urun_between", Urun.class)
+                .registerStoredProcedureParameter("min", BigDecimal.class, ParameterMode.IN)
+                .registerStoredProcedureParameter("max", BigDecimal.class, ParameterMode.IN)
+                .setParameter("min", min)
+                .setParameter("max", max)
+                .getResultList();
         session.close();
         return list;
     }
