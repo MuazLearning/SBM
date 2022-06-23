@@ -70,4 +70,12 @@ public class UrunDao<findAllbyid> {
         return sum;
     }
 
+    public Long findByUrunTuruIdCount(Long id){
+        Session session = sessionFactory.openSession();
+        Long count = (Long) session.createQuery("select count(*) from Urun where urunTuru.id = :id")
+                .setParameter("id", id).uniqueResult();
+        session.close();
+        return count;
+    }
+
 }

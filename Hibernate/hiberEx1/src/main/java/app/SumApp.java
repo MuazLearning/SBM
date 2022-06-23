@@ -8,7 +8,7 @@ public class SumApp {
 
         UrunEntityService urunEntityService = new UrunEntityService();
         Long sum = urunEntityService.findByUrunTuruIdAndSumStokMiktari(1L);
-        System.out.println(sum); 
+        System.out.println(sum);
 
     }
 
