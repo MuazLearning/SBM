@@ -29,4 +29,8 @@ public class UrunEntityService {
         return urunDao.findAllWithOrderByStokMiktari();
     }
 
+    public List<Urun> findAllWithOrderByStokMiktariAndLimit(int limit){
+        return urunDao.findAllWithOrderByStokMiktariAndLimit(limit);
+    }
+
 }

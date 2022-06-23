@@ -45,4 +45,12 @@ public class UrunDao {
         return list;
     }
 
+    public List<Urun> findAllWithOrderByStokMiktariAndLimit(int limit){
+        Session session = sessionFactory.openSession();
+        List<Urun> list = session.createQuery("from Urun order by stokMiktari desc, adi asc")
+                .setMaxResults(limit).list();
+        session.close();
+        return list;
+    }
+
 }
