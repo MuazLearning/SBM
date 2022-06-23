@@ -1,6 +1,7 @@
 package dao;
 
 import domain.UrunTuru;
+import dto.UrunTuruDto;
 import hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -57,6 +58,18 @@ public class UrunTuruDao {
 
         session.close();
 
+        return list;
+    }
+
+    public List<UrunTuruDto> findAllUrunTuruDto() {
+        Session session = sessionFactory.openSession();
+        List<UrunTuruDto> list = session.createQuery("select new dto.UrunTuruDto (" +
+                "urunTuru.id, urunTuru.adi, min (urun.fiyat), max (urun.fiyat), " +
+                "avg (urun.fiyat), sum  (urun.stokMiktari), count (urun.id)) " +
+                "from Urun urun, UrunTuru urunTuru " +
+                "where urun.urunTuru.id = urunTuru.id " +
+                "group by urunTuru.id, urunTuru.adi").list();
+        session.close();
         return list;
     }
 
