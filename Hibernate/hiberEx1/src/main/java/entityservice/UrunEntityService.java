@@ -78,4 +78,8 @@ public class UrunEntityService {
         return urunDao.callUrunFindAll();
     }
 
+    public List<Urun> callUrunFindUrunBetween(Long min, Long max) {
+        return urunDao.callUrunFindUrunBetween(min, max);
+    }
+
 }
