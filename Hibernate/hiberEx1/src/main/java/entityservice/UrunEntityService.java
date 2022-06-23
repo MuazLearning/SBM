@@ -9,20 +9,24 @@ public class UrunEntityService {
 
     private UrunDao urunDao;
 
-    public UrunEntityService(){
+    public UrunEntityService() {
         this.urunDao = new UrunDao();
     }
 
-    public List<Urun> findAll(){
+    public List<Urun> findAll() {
         return urunDao.findAll();
     }
 
-    public Urun findById(Long id){
+    public Urun findById(Long id) {
         return urunDao.findById(id);
     }
 
-    public List<Urun> findAllByStokMiktariMinAndMax(Long min, Long max){
+    public List<Urun> findAllByStokMiktariMinAndMax(Long min, Long max) {
         return urunDao.findAllByStokMiktariMinAndMax(min, max);
+    }
+
+    public List<Urun> findAllWithOrderByStokMiktari() {
+        return urunDao.findAllWithOrderByStokMiktari();
     }
 
 }

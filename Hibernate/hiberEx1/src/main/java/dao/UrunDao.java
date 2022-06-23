@@ -38,4 +38,11 @@ public class UrunDao {
         return list;
     }
 
+    public List<Urun> findAllWithOrderByStokMiktari(){
+        Session session = sessionFactory.openSession();
+        List<Urun> list = session.createQuery("from Urun order by stokMiktari, adi").list();
+        session.close();
+        return list;
+    }
+
 }
