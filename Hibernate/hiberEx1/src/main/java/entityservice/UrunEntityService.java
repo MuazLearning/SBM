@@ -1,5 +1,6 @@
 package entityservice;
 
+import dto.UrunBilgiDto;
 import dto.UrunDto;
 import dao.UrunDao;
 import domain.Urun;
@@ -58,6 +59,10 @@ public class UrunEntityService {
 
     public List<UrunDto> findAllUrunDto(){
         return urunDao.findAllUrunDto();
+    }
+
+    public List<UrunBilgiDto> findAllUrunBilgiDto() {
+        return urunDao.findAllUrunBilgiDto();
     }
 
 }
