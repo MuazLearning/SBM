@@ -128,4 +128,24 @@ public class UrunDao {
         return max;
     }
 
+
+    /*
+    delimiter $$
+
+    CREATE PROCEDURE urun_findAll ()
+
+    BEGIN
+    select * from urun;
+    END $$
+
+    call urun_findAll();
+    */
+    public List<Urun> callUrunFindAll() {
+        Session session = sessionFactory.openSession();
+        List<Urun> list = session.createSQLQuery("{call urun_findAll()}").addEntity(Urun.class).list();
+//        List<Urun> list = session.createNativeQuery("{call urun_findAll()}").addEntity(Urun.class).list();
+        session.close();
+        return list;
+    }
+
 }

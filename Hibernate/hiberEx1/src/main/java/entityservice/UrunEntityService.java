@@ -74,4 +74,8 @@ public class UrunEntityService {
         return urunDao.findUrunFiyatMax();
     }
 
+    public List<Urun> callUrunFindAll() {
+        return urunDao.callUrunFindAll();
+    }
+
 }
