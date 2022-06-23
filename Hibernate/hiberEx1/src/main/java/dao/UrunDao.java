@@ -62,4 +62,12 @@ public class UrunDao<findAllbyid> {
         return list;
     }
 
+    public Long findByUrunTuruIdAndSumStokMiktari(Long id){
+        Session session = sessionFactory.openSession();
+        Long sum = (Long) session.createQuery("select sum(stokMiktari) from Urun where urunTuru.id = :id")
+                .setParameter("id", id).uniqueResult();
+        session.close();
+        return sum;
+    }
+
 }

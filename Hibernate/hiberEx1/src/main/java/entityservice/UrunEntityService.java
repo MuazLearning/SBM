@@ -38,4 +38,8 @@ public class UrunEntityService {
         return urunDao.findAllBySonKullanmaTarihi(sonKullanmaTarihi);
     }
 
+    public Long findByUrunTuruIdAndSumStokMiktari(Long id){
+        return urunDao.findByUrunTuruIdAndSumStokMiktari(id);
+    }
+
 }
