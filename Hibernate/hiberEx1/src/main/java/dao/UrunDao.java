@@ -8,6 +8,7 @@ import hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -113,5 +114,18 @@ public class UrunDao {
         return list;
     }
 
+    public BigDecimal findUrunFiyatMin() {
+        Session session = sessionFactory.openSession();
+        BigDecimal min = (BigDecimal) session.createQuery("select min(fiyat) from Urun").uniqueResult();
+        session.close();
+        return min;
+    }
+
+    public BigDecimal findUrunFiyatMax() {
+        Session session = sessionFactory.openSession();
+        BigDecimal max = (BigDecimal) session.createQuery("select max(fiyat) from Urun").uniqueResult();
+        session.close();
+        return max;
+    }
 
 }

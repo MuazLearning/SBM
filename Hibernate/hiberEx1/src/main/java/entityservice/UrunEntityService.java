@@ -6,6 +6,7 @@ import dao.UrunDao;
 import domain.Urun;
 import enums.EnumBirim;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -63,6 +64,14 @@ public class UrunEntityService {
 
     public List<UrunBilgiDto> findAllUrunBilgiDto() {
         return urunDao.findAllUrunBilgiDto();
+    }
+
+    public BigDecimal findUrunFiyatMin() {
+        return urunDao.findUrunFiyatMin();
+    }
+
+    public BigDecimal findUrunFiyatMax() {
+        return urunDao.findUrunFiyatMax();
     }
 
 }
