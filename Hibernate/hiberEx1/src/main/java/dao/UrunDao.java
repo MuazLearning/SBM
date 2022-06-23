@@ -86,4 +86,12 @@ public class UrunDao<findAllbyid> {
         return list;
     }
 
+    public Double findByIdWithAvgStokMiktari(Long id){
+        Session session = sessionFactory.openSession();
+        Double avg = (Double) session.createQuery("select avg(stokMiktari) from Urun where urunTuru.id = :id")
+                .setParameter("id", id).uniqueResult();
+        session.close();
+        return avg;
+    }
+
 }

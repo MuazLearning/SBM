@@ -51,4 +51,8 @@ public class UrunEntityService {
         return urunDao.findAllstokBirimi();
     }
 
+    public Double findByIdWithAvgStokMiktari(Long id){
+        return urunDao.findByIdWithAvgStokMiktari(id);
+    }
+
 }
