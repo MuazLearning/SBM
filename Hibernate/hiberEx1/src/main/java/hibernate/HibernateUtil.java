@@ -1,7 +1,7 @@
 package hibernate;
 
-import domain.mto.Sehir;
-import domain.mto.Ulke;
+import domain.Urun;
+import domain.UrunTuru;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -20,8 +20,11 @@ public class HibernateUtil {
 //            cfg.addAnnotatedClass(Kitap.class);
 //            cfg.addAnnotatedClass(Yazar.class);
 
-            cfg.addAnnotatedClass(Ulke.class);
-            cfg.addAnnotatedClass(Sehir.class);
+//            cfg.addAnnotatedClass(Ulke.class);
+//            cfg.addAnnotatedClass(Sehir.class);
+
+            cfg.addAnnotatedClass(UrunTuru.class);
+            cfg.addAnnotatedClass(Urun.class);
 
             SessionFactory sessionFactory = cfg.configure("hibernate.cfg.xml").buildSessionFactory();
 
