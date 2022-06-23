@@ -2,6 +2,7 @@ package entityservice;
 
 import dao.UrunDao;
 import domain.Urun;
+import enums.EnumBirim;
 
 import java.util.Date;
 import java.util.List;
@@ -44,6 +45,10 @@ public class UrunEntityService {
 
     public Long findByUrunTuruIdCount(Long id){
         return urunDao.findByUrunTuruIdCount(id);
+    }
+
+    public List<EnumBirim> findAllstokBirimi(){
+        return urunDao.findAllstokBirimi();
     }
 
 }

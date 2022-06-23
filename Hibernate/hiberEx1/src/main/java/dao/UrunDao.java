@@ -1,6 +1,7 @@
 package dao;
 
 import domain.Urun;
+import enums.EnumBirim;
 import hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -76,6 +77,13 @@ public class UrunDao<findAllbyid> {
                 .setParameter("id", id).uniqueResult();
         session.close();
         return count;
+    }
+
+    public List<EnumBirim> findAllstokBirimi(){
+        Session session = sessionFactory.openSession();
+        List<EnumBirim> list = session.createQuery("select distinct stokBirimi from Urun").list();
+        session.close();
+        return list;
     }
 
 }
