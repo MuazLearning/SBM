@@ -1,5 +1,6 @@
 package dao;
 
+import domain.Urun;
 import domain.UrunTuru;
 import hibernate.HibernateUtil;
 import org.hibernate.Session;
@@ -23,5 +24,11 @@ public class UrunTuruDao{
         return list;
     }
 
+    public UrunTuru findById(Long id){
+        Session session = sessionFactory.openSession();
+        UrunTuru urunTuru = session.get(UrunTuru.class, id);
+        session.close();
+        return urunTuru;
+    }
 
 }

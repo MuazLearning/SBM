@@ -1,6 +1,7 @@
 package entityservice;
 
 import dao.UrunTuruDao;
+import domain.Urun;
 import domain.UrunTuru;
 
 import java.util.List;
@@ -15,6 +16,10 @@ public class UrunTuruEntityService {
 
     public List<UrunTuru> findAll(){
         return urunTuruDao.findAll();
+    }
+
+    public UrunTuru findById(Long id){
+        return urunTuruDao.findById(id);
     }
 
 }

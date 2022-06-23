@@ -1,6 +1,9 @@
 package entityservice;
 
 import dao.UrunDao;
+import domain.Urun;
+
+import java.util.List;
 
 public class UrunEntityService {
 
@@ -8,6 +11,14 @@ public class UrunEntityService {
 
     public UrunEntityService(){
         this.urunDao = new UrunDao();
+    }
+
+    public List<Urun> findAll(){
+        return urunDao.findAll();
+    }
+
+    public Urun findById(Long id){
+        return urunDao.findById(id);
     }
 
 }
