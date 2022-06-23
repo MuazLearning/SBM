@@ -5,9 +5,10 @@ import hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.Date;
 import java.util.List;
 
-public class UrunDao {
+public class UrunDao<findAllbyid> {
 
     SessionFactory sessionFactory;
 
@@ -49,6 +50,14 @@ public class UrunDao {
         Session session = sessionFactory.openSession();
         List<Urun> list = session.createQuery("from Urun order by stokMiktari desc, adi asc")
                 .setMaxResults(limit).list();
+        session.close();
+        return list;
+    }
+
+    public List<Urun> findAllBySonKullanmaTarihi(Date sonKullanmaTarihi){
+        Session session = sessionFactory.openSession();
+        List<Urun> list = session.createQuery("from Urun where sonKullanmaTarihi >= :sonKullanmaTarihi")
+                .setParameter("sonKullanmaTarihi", sonKullanmaTarihi).list();
         session.close();
         return list;
     }

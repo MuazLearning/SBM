@@ -3,6 +3,7 @@ package entityservice;
 import dao.UrunDao;
 import domain.Urun;
 
+import java.util.Date;
 import java.util.List;
 
 public class UrunEntityService {
@@ -29,8 +30,12 @@ public class UrunEntityService {
         return urunDao.findAllWithOrderByStokMiktari();
     }
 
-    public List<Urun> findAllWithOrderByStokMiktariAndLimit(int limit){
+    public List<Urun> findAllWithOrderByStokMiktariAndLimit(int limit) {
         return urunDao.findAllWithOrderByStokMiktariAndLimit(limit);
+    }
+
+    public List<Urun> findAllBySonKullanmaTarihi(Date sonKullanmaTarihi) {
+        return urunDao.findAllBySonKullanmaTarihi(sonKullanmaTarihi);
     }
 
 }
