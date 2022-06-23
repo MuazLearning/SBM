@@ -1,7 +1,7 @@
 package app;
 
-import domain.Sehir;
-import domain.Ulke;
+import domain.mto.Sehir;
+import domain.mto.Ulke;
 import hibernate.HibernateUtil;
 import org.hibernate.Session;
 

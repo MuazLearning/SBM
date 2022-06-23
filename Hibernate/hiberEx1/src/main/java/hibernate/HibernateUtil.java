@@ -1,6 +1,7 @@
 package hibernate;
 
-import domain.*;
+import domain.mto.Sehir;
+import domain.mto.Ulke;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

@@ -1,7 +1,7 @@
 package app;
 
-import domain.Kisi;
-import domain.ParmakIzi;
+import domain.oto.Kisi;
+import domain.oto.ParmakIzi;
 import hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

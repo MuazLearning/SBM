@@ -1,4 +1,4 @@
-package domain;
+package domain.mtm;
 
 import javax.persistence.*;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package domain;
+package domain.oto;
 
 import javax.persistence.*;
 

@@ -1,7 +1,7 @@
 package app;
 
-import domain.Kitap;
-import domain.Yazar;
+import domain.mtm.Kitap;
+import domain.mtm.Yazar;
 import hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
