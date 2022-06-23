@@ -1,5 +1,6 @@
 package dao;
 
+import dto.UrunDto;
 import domain.Urun;
 import enums.EnumBirim;
 import hibernate.HibernateUtil;
@@ -9,7 +10,7 @@ import org.hibernate.SessionFactory;
 import java.util.Date;
 import java.util.List;
 
-public class UrunDao<findAllbyid> {
+public class UrunDao {
 
     SessionFactory sessionFactory;
 
@@ -93,5 +94,13 @@ public class UrunDao<findAllbyid> {
         session.close();
         return avg;
     }
+
+    public List<UrunDto> findAllUrunDto(){
+        Session session = sessionFactory.openSession();
+        List<UrunDto> list = session.createQuery("select new dto.UrunDto(id, adi, fiyat) from Urun u").list();
+        session.close();
+        return list;
+    }
+
 
 }

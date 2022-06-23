@@ -1,5 +1,6 @@
 package entityservice;
 
+import dto.UrunDto;
 import dao.UrunDao;
 import domain.Urun;
 import enums.EnumBirim;
@@ -53,6 +54,10 @@ public class UrunEntityService {
 
     public Double findByIdWithAvgStokMiktari(Long id){
         return urunDao.findByIdWithAvgStokMiktari(id);
+    }
+
+    public List<UrunDto> findAllUrunDto(){
+        return urunDao.findAllUrunDto();
     }
 
 }
