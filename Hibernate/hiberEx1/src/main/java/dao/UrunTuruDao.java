@@ -53,7 +53,11 @@ public class UrunTuruDao {
                 break;
         }
 
-        return query.list();
+        List<UrunTuru> list = query.list();
+
+        session.close();
+
+        return list;
     }
 
 }
