@@ -30,4 +30,12 @@ public class UrunDao {
         return urun;
     }
 
+    public List<Urun> findAllByStokMiktariMinAndMax(Long min, Long max){
+        Session session = sessionFactory.openSession();
+        List<Urun> list = session.createQuery("from Urun where stokMiktari between :min and :max")
+                .setParameter("min", min).setParameter("max", max).list();
+        session.close();
+        return list;
+    }
+
 }

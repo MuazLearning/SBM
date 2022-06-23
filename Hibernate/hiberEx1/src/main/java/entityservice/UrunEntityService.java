@@ -21,4 +21,8 @@ public class UrunEntityService {
         return urunDao.findById(id);
     }
 
+    public List<Urun> findAllByStokMiktariMinAndMax(Long min, Long max){
+        return urunDao.findAllByStokMiktariMinAndMax(min, max);
+    }
+
 }
