@@ -94,4 +94,8 @@ public class UrunEntityService {
         return urunDao.findAllWithCriteria();
     }
 
+    public Urun findByIdWithCriteria(Long id) {
+        return urunDao.findByIdWithCriteria(id);
+    }
+
 }

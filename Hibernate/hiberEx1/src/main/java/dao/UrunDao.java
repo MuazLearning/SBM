@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import javax.persistence.ParameterMode;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -46,6 +47,17 @@ public class UrunDao {
         Urun urun = session.get(Urun.class, id);
         session.close();
         return urun;
+    }
+
+    public Urun findByIdWithCriteria(Long id) {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Urun> query = criteriaBuilder.createQuery(Urun.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        query.select(root).where(criteriaBuilder.equal(root.get("id"), id));
+
+        return session.createQuery(query).uniqueResult();
     }
 
     public List<Urun> findAllByStokMiktariMinAndMax(Long min, Long max) {
