@@ -9,6 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import javax.persistence.ParameterMode;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +28,16 @@ public class UrunDao {
         List<Urun> list = session.createQuery("from Urun").list();
         session.close();
         return list;
+    }
+
+    public List<Urun> findAllWithCriteria() {
+
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Urun> query = criteriaBuilder.createQuery(Urun.class);
+        query.from(Urun.class);
+
+        return session.createQuery(query).getResultList();
     }
 
     public Urun findById(Long id) {
