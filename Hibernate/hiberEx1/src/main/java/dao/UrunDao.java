@@ -68,6 +68,17 @@ public class UrunDao {
         return list;
     }
 
+    public List<Urun> findAllByStokMiktariMinAndMaxCriteria(Long min, Long max) {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Urun> query = criteriaBuilder.createQuery(Urun.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        query.select(root).where(criteriaBuilder.between(root.get("stokMiktari"), min, max));
+
+        return session.createQuery(query).getResultList();
+    }
+
     public List<Urun> findAllWithOrderByStokMiktari() {
         Session session = sessionFactory.openSession();
         List<Urun> list = session.createQuery("from Urun order by stokMiktari, adi").list();
