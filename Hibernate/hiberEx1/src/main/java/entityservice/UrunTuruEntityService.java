@@ -36,4 +36,8 @@ public class UrunTuruEntityService {
         return urunTuruDao.findByUrunAdiCriteria(adi, matchMode);
     }
 
+    public List<UrunTuruDto> findAllUrunTuruDtoCriteria() {
+        return urunTuruDao.findAllUrunTuruDtoCriteria();
+    }
+
 }

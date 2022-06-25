@@ -1,5 +1,6 @@
 package dao;
 
+import domain.Urun;
 import domain.UrunTuru;
 import dto.UrunTuruDto;
 import hibernate.HibernateUtil;
@@ -10,6 +11,7 @@ import org.hibernate.query.Query;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
@@ -106,6 +108,27 @@ public class UrunTuruDao {
                 "group by urunTuru.id, urunTuru.adi").list();
         session.close();
         return list;
+    }
+
+    public List<UrunTuruDto> findAllUrunTuruDtoCriteria() {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<UrunTuruDto> query = criteriaBuilder.createQuery(UrunTuruDto.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        root.join("urunTuru", JoinType.INNER);
+        query.groupBy(root.get("urunTuru").get("id"));
+        query.select(criteriaBuilder.construct(UrunTuruDto.class,
+                root.get("urunTuru").get("id"),
+                root.get("urunTuru").get("adi"),
+                criteriaBuilder.min(root.get("fiyat")),
+                criteriaBuilder.max(root.get("fiyat")),
+                criteriaBuilder.avg(root.get("fiyat")),
+                criteriaBuilder.sum(root.get("stokMiktari")),
+                criteriaBuilder.count(root.get("id"))
+        ));
+
+        return session.createQuery(query).list();
     }
 
 }
