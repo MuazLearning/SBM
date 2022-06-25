@@ -8,6 +8,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class UrunTuruDao {
@@ -59,6 +62,38 @@ public class UrunTuruDao {
         session.close();
 
         return list;
+    }
+
+    public List<UrunTuru> findByUrunAdiCriteria(String adi, MatchMode matchMode) {
+
+        String parameter = "";
+
+        switch (matchMode) {
+            case EXACT:
+                parameter = adi;
+                break;
+            case START:
+                parameter = adi + "%";
+                break;
+            case END:
+                parameter = "%" + adi;
+                break;
+            case ANYWHERE:
+                parameter = "%" + adi + "%";
+                break;
+            default:
+                break;
+        }
+
+
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<UrunTuru> query = criteriaBuilder.createQuery(UrunTuru.class);
+        Root<UrunTuru> root = query.from(UrunTuru.class);
+
+        query.select(root).where(criteriaBuilder.like(root.<String>get("adi"), parameter));
+
+        return session.createQuery(query).list();
     }
 
     public List<UrunTuruDto> findAllUrunTuruDto() {
