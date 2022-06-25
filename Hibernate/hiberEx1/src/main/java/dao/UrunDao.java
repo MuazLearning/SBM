@@ -210,6 +210,16 @@ public class UrunDao {
         return list;
     }
 
+    public List<UrunDto> findAllUrunDtoCriteria() {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<UrunDto> query = criteriaBuilder.createQuery(UrunDto.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        query.select(criteriaBuilder.construct(UrunDto.class, root.get("id"), root.get("adi"), root.get("fiyat")));
+        return session.createQuery(query).list();
+    }
+
     public List<UrunBilgiDto> findAllUrunBilgiDto() {
         Session session = sessionFactory.openSession();
         List<UrunBilgiDto> list = session.createQuery("select " +

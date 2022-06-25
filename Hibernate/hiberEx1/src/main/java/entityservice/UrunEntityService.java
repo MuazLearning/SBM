@@ -134,4 +134,8 @@ public class UrunEntityService {
         return urunDao.findByAvgStokMiktariCriteria();
     }
 
+    public List<UrunDto> findAllUrunDtoCriteria() {
+        return urunDao.findAllUrunDtoCriteria();
+    }
+
 }
