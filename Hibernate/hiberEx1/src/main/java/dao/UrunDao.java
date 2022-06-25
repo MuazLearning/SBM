@@ -230,6 +230,24 @@ public class UrunDao {
         return list;
     }
 
+    public List<UrunBilgiDto> findAllUrunBilgiDtoCriteria() {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<UrunBilgiDto> query = criteriaBuilder.createQuery(UrunBilgiDto.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        root.join("urunTuru", JoinType.INNER);
+
+        query.select(criteriaBuilder.construct(UrunBilgiDto.class,
+                root.get("id"),
+                root.get("adi"),
+                root.get("fiyat"),
+                root.get("urunTuru").get("adi"),
+                root.get("urunTuru").get("urunTuru")));
+
+        return session.createQuery(query).list();
+    }
+
     public BigDecimal findUrunFiyatMin() {
         Session session = sessionFactory.openSession();
         BigDecimal min = (BigDecimal) session.createQuery("select min(fiyat) from Urun").uniqueResult();

@@ -138,4 +138,8 @@ public class UrunEntityService {
         return urunDao.findAllUrunDtoCriteria();
     }
 
+    public List<UrunBilgiDto> findAllUrunBilgiDtoCriteria() {
+        return urunDao.findAllUrunBilgiDtoCriteria();
+    }
+
 }
