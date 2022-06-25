@@ -146,6 +146,16 @@ public class UrunDao {
         return sum;
     }
 
+    public Long findByUrunTuruIdAndSumStokMiktariCriteria() {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Long> query = criteriaBuilder.createQuery(Long.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        query.select(criteriaBuilder.sumAsLong(root.<Integer>get("stokMiktari")));
+        return session.createQuery(query).uniqueResult();
+    }
+
     public Long findByUrunTuruIdCount(Long id) {
         Session session = sessionFactory.openSession();
         Long count = (Long) session.createQuery("select count(*) from Urun where urunTuru.id = :id")

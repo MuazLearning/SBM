@@ -114,4 +114,8 @@ public class UrunEntityService {
         return urunDao.findAllBySonKullanmaTarihiCriteria(sonKullanmaTarihi);
     }
 
+    public Long findByUrunTuruIdAndSumStokMiktariCriteria() {
+        return urunDao.findByUrunTuruIdAndSumStokMiktariCriteria();
+    }
+
 }
