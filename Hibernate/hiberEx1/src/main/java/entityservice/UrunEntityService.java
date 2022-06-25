@@ -118,4 +118,8 @@ public class UrunEntityService {
         return urunDao.findByUrunTuruIdAndSumStokMiktariCriteria();
     }
 
+    public Long findByUrunTuruCountCriteria(Long urunTuruId) {
+        return urunDao.findByUrunTuruCountCriteria(urunTuruId);
+    }
+
 }

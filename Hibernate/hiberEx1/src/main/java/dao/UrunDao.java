@@ -164,6 +164,20 @@ public class UrunDao {
         return count;
     }
 
+    public Long findByUrunTuruCountCriteria(Long urunTuruId) {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Long> query = criteriaBuilder.createQuery(Long.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        query.select(criteriaBuilder.count(root.get("id")));
+        query.where(criteriaBuilder.equal(
+                root.get("urunTuru").get("id"), urunTuruId
+        ));
+
+        return session.createQuery(query).uniqueResult();
+    }
+
     public List<EnumBirim> findAllstokBirimi() {
         Session session = sessionFactory.openSession();
         List<EnumBirim> list = session.createQuery("select distinct stokBirimi from Urun").list();
