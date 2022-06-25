@@ -105,4 +105,9 @@ public class UrunEntityService {
     public List<Urun> findAllWithOrderByStokMiktariCriteria() {
         return urunDao.findAllWithOrderByStokMiktariCriteria();
     }
+
+    public List<Urun> findAllWithOrderByStokMiktariAndLimitCriteria(int limit) {
+        return urunDao.findAllWithOrderByStokMiktariAndLimitCriteria(limit);
+    }
+
 }

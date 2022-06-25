@@ -105,6 +105,17 @@ public class UrunDao {
         return list;
     }
 
+    public List<Urun> findAllWithOrderByStokMiktariAndLimitCriteria(int limit) {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Urun> query = criteriaBuilder.createQuery(Urun.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        query.select(root).orderBy(criteriaBuilder.desc(root.get("stokMiktari")), criteriaBuilder.asc(root.get("adi")));
+
+        return session.createQuery(query).setMaxResults(limit).list();
+    }
+
     public List<Urun> findAllBySonKullanmaTarihi(Date sonKullanmaTarihi) {
         Session session = sessionFactory.openSession();
         List<Urun> list = session.createQuery("from Urun where sonKullanmaTarihi >= :sonKullanmaTarihi")
