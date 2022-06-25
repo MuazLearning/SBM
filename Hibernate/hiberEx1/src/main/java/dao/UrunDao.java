@@ -217,11 +217,33 @@ public class UrunDao {
         return min;
     }
 
+    public BigDecimal findUrunFiyatMinCriteria() {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<BigDecimal> query = criteriaBuilder.createQuery(BigDecimal.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        query.select(criteriaBuilder.min(root.get("fiyat")));
+
+        return session.createQuery(query).uniqueResult();
+    }
+
     public BigDecimal findUrunFiyatMax() {
         Session session = sessionFactory.openSession();
         BigDecimal max = (BigDecimal) session.createQuery("select max(fiyat) from Urun").uniqueResult();
         session.close();
         return max;
+    }
+
+    public BigDecimal findUrunFiyatMaxCriteria() {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<BigDecimal> query = criteriaBuilder.createQuery(BigDecimal.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        query.select(criteriaBuilder.max(root.get("fiyat")));
+
+        return session.createQuery(query).uniqueResult();
     }
 
     public List<Urun> callUrunFindAll() {

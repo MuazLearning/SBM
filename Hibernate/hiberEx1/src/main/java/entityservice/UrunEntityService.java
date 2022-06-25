@@ -1,9 +1,9 @@
 package entityservice;
 
-import dto.UrunBilgiDto;
-import dto.UrunDto;
 import dao.UrunDao;
 import domain.Urun;
+import dto.UrunBilgiDto;
+import dto.UrunDto;
 import enums.EnumBirim;
 
 import java.math.BigDecimal;
@@ -42,23 +42,23 @@ public class UrunEntityService {
         return urunDao.findAllBySonKullanmaTarihi(sonKullanmaTarihi);
     }
 
-    public Long findByUrunTuruIdAndSumStokMiktari(Long id){
+    public Long findByUrunTuruIdAndSumStokMiktari(Long id) {
         return urunDao.findByUrunTuruIdAndSumStokMiktari(id);
     }
 
-    public Long findByUrunTuruIdCount(Long id){
+    public Long findByUrunTuruIdCount(Long id) {
         return urunDao.findByUrunTuruIdCount(id);
     }
 
-    public List<EnumBirim> findAllstokBirimi(){
+    public List<EnumBirim> findAllstokBirimi() {
         return urunDao.findAllstokBirimi();
     }
 
-    public Double findByIdWithAvgStokMiktari(Long id){
+    public Double findByIdWithAvgStokMiktari(Long id) {
         return urunDao.findByIdWithAvgStokMiktari(id);
     }
 
-    public List<UrunDto> findAllUrunDto(){
+    public List<UrunDto> findAllUrunDto() {
         return urunDao.findAllUrunDto();
     }
 
@@ -120,6 +120,14 @@ public class UrunEntityService {
 
     public Long findByUrunTuruCountCriteria(Long urunTuruId) {
         return urunDao.findByUrunTuruCountCriteria(urunTuruId);
+    }
+
+    public BigDecimal findUrunFiyatMinCriteria() {
+        return urunDao.findUrunFiyatMinCriteria();
+    }
+
+    public BigDecimal findUrunFiyatMaxCriteria() {
+        return urunDao.findUrunFiyatMaxCriteria();
     }
 
 }
