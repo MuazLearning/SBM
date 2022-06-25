@@ -9,9 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import javax.persistence.ParameterMode;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.TemporalType;
+import javax.persistence.criteria.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -122,6 +121,21 @@ public class UrunDao {
                 .setParameter("sonKullanmaTarihi", sonKullanmaTarihi).list();
         session.close();
         return list;
+    }
+
+    public List<Urun> findAllBySonKullanmaTarihiCriteria(Date sonKullanmaTarihi) {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Urun> query = criteriaBuilder.createQuery(Urun.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        ParameterExpression<Date> parameter = criteriaBuilder.parameter(Date.class);
+
+        Predicate tarih = criteriaBuilder.greaterThanOrEqualTo(root.get("sonKullanmaTarihi").as(Date.class), parameter);
+
+        query.where(tarih);
+
+        return session.createQuery(query).setParameter(parameter, sonKullanmaTarihi, TemporalType.DATE).list();
     }
 
     public Long findByUrunTuruIdAndSumStokMiktari(Long id) {

@@ -110,4 +110,8 @@ public class UrunEntityService {
         return urunDao.findAllWithOrderByStokMiktariAndLimitCriteria(limit);
     }
 
+    public List<Urun> findAllBySonKullanmaTarihiCriteria(Date sonKullanmaTarihi) {
+        return urunDao.findAllBySonKullanmaTarihiCriteria(sonKullanmaTarihi);
+    }
+
 }
