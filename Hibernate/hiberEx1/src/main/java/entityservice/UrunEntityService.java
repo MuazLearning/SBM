@@ -130,4 +130,8 @@ public class UrunEntityService {
         return urunDao.findUrunFiyatMaxCriteria();
     }
 
+    public Double findByAvgStokMiktariCriteria() {
+        return urunDao.findByAvgStokMiktariCriteria();
+    }
+
 }

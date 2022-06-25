@@ -193,6 +193,16 @@ public class UrunDao {
         return avg;
     }
 
+    public Double findByAvgStokMiktariCriteria() {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Double> query = criteriaBuilder.createQuery(Double.class);
+        Root<Urun> root = query.from(Urun.class);
+
+        query.select(criteriaBuilder.avg(root.<Number>get("stokMiktari")));
+        return session.createQuery(query).uniqueResult();
+    }
+
     public List<UrunDto> findAllUrunDto() {
         Session session = sessionFactory.openSession();
         List<UrunDto> list = session.createQuery("select new dto.UrunDto(id, adi, fiyat) from Urun u").list();
